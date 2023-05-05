@@ -1,0 +1,169 @@
+<mvc:View
+    controllerName="CameraUploadFuntionCameraUploadFuntion.controller.View1"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:t="sap.ui.table"
+    xmlns:m="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:ui="sap.ca.ui"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    xmlns:layout="sap.ui.layout"
+    displayBlock="true"
+    xmlns="sap.uxap"
+>
+    <ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" showEditHeaderButton="true" editHeaderButtonPress="handleEditBtnPress" upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle>
+                <expandedHeading>
+                    <m:HBox>
+                        <m:Title text="Denise Smith" class="tblTitle sapUiSmallMarginTop" />
+                        <m:ObjectMarker type="Favorite" class="sapUiTinyMarginBottom" />
+                    </m:HBox>
+                </expandedHeading>
+
+                <actions>
+                    <m:Button id="openCamera" tooltip="Camera" icon="sap-icon://camera" press="onCaptureImage" type="Emphasized" />
+                    <m:Button id="openCameraL" tooltip="Camera" icon="sap-icon://camera" press="onCaptureImageL" type="Emphasized" />
+                    <u:FileUploader
+                        id="fileUploader1"
+                        class="sapUiSizeCompact"
+                        buttonOnly="true"
+                        multiple="false"
+                        fileType="png,jpg,jpeg"
+                        visible="true"
+                        enabled="{EN>/results/0/Enable}"
+                        buttonText="Browse"
+                        icon="sap-icon://upload"
+                        change="onImageUpload"
+                        maximumFilenameLength="50"
+                        maximumFileSize="2048"
+                        tooltip="Upload your file here"
+                        fileSizeExceed="handleExceedFileSize"
+                        filenameLengthExceed="handleExceedFileNameLength"
+                        typeMissmatch="handleTypeMissmatch"
+                    />
+                </actions>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+            <m:FlexBox wrap="Wrap" fitContainer="true">
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Link text="+33 6 4512 5158" />
+                    <m:Link text="DeniseSmith@sap.com" />
+
+                    <layout:HorizontalLayout class="sapUiSmallMarginEnd">
+                        <m:Image src="./test-resources/sap/uxap/images/linkedin.png" />
+                        <m:Image src="./test-resources/sap/uxap/images/Twitter.png" class="sapUiSmallMarginBegin" />
+                    </layout:HorizontalLayout>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Label text="Hello! I am Denise and I use UxAP" />
+                    <m:VBox>
+                        <m:Label text="Achieved goals" />
+                        <m:ProgressIndicator percentValue="30" displayValue="30%" />
+                    </m:VBox>
+                </layout:VerticalLayout>
+
+                <layout:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <m:Label text="San Jose, USA" />
+                </layout:VerticalLayout>
+            </m:FlexBox>
+        </headerContent>
+        <sections>
+            <ObjectPageSection id="_IDGenObjectPageSection1" titleUppercase="false" class="opsTitle">
+                <subSections>
+                    <ObjectPageSubSection id="sectionBU" title="Uplaod/Capture Image">
+                        <blocks>
+                            <m:VBox id="_IDGenVBox1">
+                                <m:HBox>
+                                    <m:Toolbar>
+                                        <m:Select tooltip="Select Width" id="selWidth" width="99px">
+                                            <core:Item text="Width" />
+                                            <core:Item text="1" />
+                                            <core:Item text="3" />
+                                            <core:Item text="5" />
+                                            <core:Item text="7" />
+                                            <core:Item text="9" />
+                                        </m:Select>
+                                        <m:Button tooltip="Color Pallete" id="selColor" press="openFullSample" icon="sap-icon://palette" />
+                                        <m:Input id='input-box' maxLength='18' placeholder='Add Comment for Image...(Maxlength 20)' width='300px' style='border:1px solid #000000;' liveChange='updateSketch' />
+                                    </m:Toolbar>
+                                </m:HBox>
+                                <m:Panel id="Photo" />
+                            </m:VBox>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+            <ObjectPageSection titleUppercase="false" class="opsTitle">
+                <subSections>
+                    <ObjectPageSubSection title="Progress Bar">
+                        <blocks>
+                            <ProcessFlow xmlns="sap.suite.ui.commons" id="processflow2" scrollable="false" nodes="{pf2>/nodes}" lanes="{pf2>/lanes}">
+                                <nodes>
+                                    <ProcessFlowNode nodeId="{pf2>id}" state="{pf2>state}" />
+                                </nodes>
+                                <lanes>
+                                    <ProcessFlowLaneHeader laneId="{pf2>id}" iconSrc="{pf2>icon}" text="{pf2>label}" position="{pf2>position}" state="{pf2>state}" />
+                                </lanes>
+                            </ProcessFlow>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" class="opsTitle">
+                <subSections>
+                    <ObjectPageSubSection title="Barcode">
+                        <blocks>
+                            <ndc:BarcodeScannerButton id="sampleBarcodeScannerButton" scanSuccess="onScanSuccess" scanFail="onScanError" inputLiveUpdate="onScanLiveupdate" dialogTitle="Barcode Scanner Button Sample" xmlns:ndc="sap.ndc" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false" class="opsTitle">
+                <subSections>
+                    <ObjectPageSubSection title="Upload Collection">
+                        <blocks>
+                        <u:FileUploader xmlns:u="sap.ui.unified" id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+									icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"/></blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+
+            <ObjectPageSection titleUppercase="false">
+                <subSections>
+                    <ObjectPageSubSection titleUppercase="false" title="Table">
+                        <blocks>
+                            <m:Table id="idMyTable" alternateRowColors="true" xmlns:m="sap.m">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar>
+                                        <m:content>
+                                            <m:Title text="Price" level="H2" />
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                    
+                            </m:Table>
+                        </blocks>
+                    
+                        <blocks>
+                            <ui:Table xmlns:ui="sap.ui.table" rows="{/ProductCollection}"  selectionMode="MultiToggle" visibleRowCount="3" paste="onPaste" id="uiTable" />
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+        <footer>
+            <m:OverflowToolbar>
+                <m:ToolbarSpacer />
+                <m:Button id="btnReset" icon="sap-icon://refresh" type="Emphasized" text="Reset" press="clearArea" />
+                <m:Button id="btnSave" icon="sap-icon://save" type="Accept" text="Save" press="onSaveImage" />
+            </m:OverflowToolbar>
+        </footer>
+    </ObjectPageLayout>
+</mvc:View>

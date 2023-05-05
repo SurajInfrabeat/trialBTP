@@ -1,0 +1,71 @@
+{
+	
+	"lanes": [
+		{
+			"id": "0",
+			"label": "Initiator",
+			"icon": "sap-icon://money-bills",
+			"position": 0,
+			"state": [
+				{
+					"state": "Positive",
+					"value": 10
+				}
+			]
+		}, {
+			"id": "1",
+			"icon": "sap-icon://monitor-payments",
+			"label": "First Level Approver",
+			"position": 1,
+			"state": [
+				{
+					"state": "Negative",
+					"value": 10
+				}
+			]
+		}, {
+			"id": "2",
+			"icon": "sap-icon://payment-approval",
+			"label": "Second Level Approver",
+			"position": 2,
+			"state": [{
+				"state": "Neutral",
+				"value": 10
+			}
+		]
+		}, {
+			"id": "3",
+			"icon": "sap-icon://money-bills",
+			"label": "Third Level Approver",
+			"position": 3,
+			"state": [
+				{
+					"state": "Planned",
+					"value": 25
+				}
+			]
+		}, {
+			"id": "4",
+			"icon": "sap-icon://payment-approval",
+			"label": "Fourth Level Approver",
+			"position": 4,
+			"state": [
+				{
+					"state": "Critical",
+					"value": 40
+				}
+			]
+		},{
+			"id": "5",
+			"icon": "sap-icon://nurse",
+			"label": "Fifth Level Approver",
+			"position": 5,
+			"state": [
+				{
+					"state": "PlannedNegative",
+					"value": 10
+				}
+			]
+		}
+	]
+}
